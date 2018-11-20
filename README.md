@@ -1,2 +1,2 @@
-# benefitstatement
-Employee benefits implementation on ASP.NET Azure
+# My Benefits on Azure ASP.NET
+This is a simple implementation of an employee benefits query applicaiton on ASP.NET Azure
