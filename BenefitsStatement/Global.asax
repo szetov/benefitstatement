@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BenefitsStatement.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BenefitStatement.Global" Language="C#" %>

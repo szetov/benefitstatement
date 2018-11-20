@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BenefitsStatement {
+namespace BenefitStatement {
     
     
     public partial class ViewSwitcher {

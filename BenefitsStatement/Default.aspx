@@ -1,42 +1,48 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BenefitsStatement._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BenefitStatement._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <style type="text/css">
+        .details-panel { margin: 20px 0; padding: 10px 20px; }
+    </style>
+<h1>Check Benefits Entitlement</h1>
+    <div class="form-group">
+        <label>Select an employee</label>
+        <asp:DropDownList ID="ddlEmployee" CssClass="form-control" runat="server"></asp:DropDownList>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
+    <asp:Button CssClass="btn btn-primary" ID="btnSubmit" runat="server" OnClick="btnSubmit_Clicked" Text="Submit" />
 
+    <asp:Label runat="server" ID="lblMessage"></asp:Label>
+
+    <asp:Panel ID="pnlDetails" CssClass="col-sm-12 bg-info details-panel" runat="server" Visible="false">
+        <h3>Benefits Detail for <%=TargetEmp.DisplayName %></h3>
+        <dl class="row">        
+            <dt class="col-sm-3">Job Title</dt>
+            <dd class="col-sm-9"><%=TargetEmp.Title %></dd>
+
+            <dt class="col-sm-3">Work Location</dt>
+            <dd class="col-sm-9"><%=TargetEmp.WorkLocation %></dd>
+
+            <dt class="col-sm-3">Hire Date</dt>
+            <dd class="col-sm-9"><%=TargetEmp.HireDate.ToString("dd-MMM-yyyy") %></dd>
+
+            <dt class="col-sm-3">Annual Leave</dt>
+            <dd class="col-sm-9"><%=$"{EmployeeBenefit.AnnualLeaveDays} days" %></dd>
+
+            <dt class="col-sm-3">Annual Base Salary</dt>
+            <dd class="col-sm-9"><%=$"{TargetEmp.Currency} " + TargetEmp.AnnualBaseSalary.ToString("#,###") %></dd>
+
+            <dt class="col-sm-3">Above Base Compensation</dt>
+            <dd class="col-sm-9"><%=$"{TargetEmp.Currency} " + TargetEmp.AboveBaseCompensation.ToString("#,###") %></dd>
+
+            <dt class="col-sm-3">Life Insurance</dt>
+            <dd class="col-sm-9"><%=$"{TargetEmp.Currency} " + EmployeeBenefit.LifeInsuranceCoverage.ToString("#,###") %></dd>
+
+            <dt class="col-sm-3">Personal Accident Insurance</dt>
+            <dd class="col-sm-9"><%=$"{TargetEmp.Currency} " + EmployeeBenefit.PersonalAccidentInsuranceCoverage.ToString("#,###") %></dd>
+
+            <dt class="col-sm-3">Critical Illness Insurance</dt>
+            <dd class="col-sm-9"><%=$"{TargetEmp.Currency} " + EmployeeBenefit.CriticalIllnessInsuranceCoverage.ToString("#,###") %></dd>
+        </dl>
+    </asp:Panel>
 </asp:Content>
